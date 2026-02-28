@@ -91,7 +91,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+      - "C:/Users/Salman Asad/Documents/Projects_2026/additional/evaluate-prometheus/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml"
     networks:
       - loki
 
@@ -129,7 +129,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - "C:/Users/Salman Asad/Documents/Projects_2026/additional/evaluate-prometheus/grafana/datasources/:/etc/grafana/provisioning/datasources"
     networks:
       - loki
 
