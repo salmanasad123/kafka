@@ -1,0 +1,8 @@
+# this defines where grafana will get the data from, datasource for grafana which is prometheus
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true

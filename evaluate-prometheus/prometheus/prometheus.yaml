@@ -1,0 +1,25 @@
+# scrap config as to how and where to locate the services, metrics path is the url from where the
+# prometheus will scrape the services. static_configs tells prometheus where to find the microservice
+# product-service label helps identify the metrics and lable them as product-service
+scrape_configs:
+  - job_name: 'product-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 3s
+    static_configs:
+      - targets: ['host.docker.internal:8083']
+        labels:
+          application: 'product-service'
+  - job_name: 'user-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 3s
+    static_configs:
+      - targets: ['host.docker.internal:8084']
+        labels:
+          application: 'user-service'
+  - job_name: 'order-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 3s
+    static_configs:
+      - targets: ['host.docker.internal:8085']
+        labels:
+          application: 'order-service'
