@@ -1,6 +1,9 @@
 # scrap config as to how and where to locate the services, metrics path is the url from where the
 # prometheus will scrape the services. static_configs tells prometheus where to find the microservice
-# product-service label helps identify the metrics and lable them as product-service
+# product-service label helps identify the metrics and label them as product-service. All the
+# metrics exposed by product-service (microservice) will be labelled as product-service on prometheus
+# this is how the data (actuator metrics) is exposed to prometheus : http://localhost:8083/actuator/prometheus
+# actuator metric: application.ready.time
 scrape_configs:
   - job_name: 'product-service'
     metrics_path: '/actuator/prometheus'
