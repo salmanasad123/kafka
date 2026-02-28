@@ -1,4 +1,5 @@
 # this defines where grafana will get the data from, datasource for grafana which is prometheus
+# datasources for loki is also added
 apiVersion: 1
 datasources:
   - name: Prometheus
@@ -6,3 +7,11 @@ datasources:
     access: proxy
     url: http://prometheus:9090
     isDefault: true
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://gateway:3100
+    jsonData:
+      httpHeaderName1: "X-Scope-OrgID"
+    secureJsonData:
+      httpHeaderValue1: "tenant1"

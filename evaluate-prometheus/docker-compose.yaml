@@ -11,7 +11,7 @@ services:
       - 7946
       - 9095
     volumes:
-      - ./loki-config.yaml:/etc/loki/config.yaml
+      - ./logging/loki-config.yaml:/etc/loki/config.yaml
     depends_on:
       - minio
     healthcheck:
@@ -33,7 +33,7 @@ services:
       - 7946
       - 9095
     volumes:
-      - ./loki-config.yaml:/etc/loki/config.yaml
+      - ./logging/loki-config.yaml:/etc/loki/config.yaml
     healthcheck:
       test: [ "CMD", "/usr/bin/loki", "-health" ]
       start_period: 30s
@@ -48,7 +48,7 @@ services:
   alloy:
     image: grafana/alloy:latest
     volumes:
-      - ./alloy-local-config.yaml:/etc/alloy/config.alloy:ro
+      - ./logging/alloy-local-config.yaml:/etc/alloy/config.alloy:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - "C:/Users/Salman Asad/Documents/Projects_2026/ecom-microservices/logs:/logs-parent:ro"
     command:  run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
@@ -91,7 +91,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
     networks:
       - loki
 
@@ -136,7 +136,7 @@ services:
   backend:
     image: grafana/loki:latest
     volumes:
-      - ./loki-config.yaml:/etc/loki/config.yaml
+      - ./logging/loki-config.yaml:/etc/loki/config.yaml
     ports:
       - "3100"
       - "7946"
