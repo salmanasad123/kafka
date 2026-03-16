@@ -9,10 +9,17 @@ import java.util.function.Consumer;
 public class KafkaConsumerStream {
 
     @Bean
-    public Consumer<RiderLocation> processRiderLocation(){
+    public Consumer<RiderLocation> processRiderLocation() {
         return riderLocation -> {
             System.out.println("Received location: " + riderLocation.getRiderId() + " : " +
                     riderLocation.getLatitude() + " : " + riderLocation.getLongitude());
+        };
+    }
+
+    @Bean
+    public Consumer<String> processRiderStatus() {
+        return status -> {
+            System.out.println("Received status: " + status);
         };
     }
 }
